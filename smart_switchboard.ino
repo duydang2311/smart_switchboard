@@ -40,6 +40,7 @@ BLYNK_CONNECTED() {
 }
 
 void setup() {
+  pinMode(GPIO0_PIN, OUTPUT);
   Serial.begin(115200);
 
   Blynk.begin(auth, ssid, pass);
