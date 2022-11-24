@@ -17,7 +17,7 @@ long lightsTimeout = 0;
 
 BlynkTimer timer;
 
-void oneSecondTimerEvent() {
+void everySecondTimerEvent() {
   Blynk.virtualWrite(UPTIME_VIRTUAL_PIN, millis() / 1000);
 
   if (lightsTimeout == 0) {
@@ -44,7 +44,7 @@ void setup() {
   Serial.begin(115200);
 
   Blynk.begin(auth, ssid, pass);
-  timer.setInterval(1000L, oneSecondTimerEvent);
+  timer.setInterval(1000L, everySecondTimerEvent);
 }
 
 void loop() {
