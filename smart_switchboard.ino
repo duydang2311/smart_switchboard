@@ -6,9 +6,9 @@
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 
-const unsigned char UPTIME_VIRTUAL_PIN = V0;
-const unsigned char LIGHTS_TIMEOUT_VIRTUAL_PIN = V1;
-const unsigned char GPIO0_PIN = 0;
+const byte UPTIME_VIRTUAL_PIN = V0;
+const byte LIGHTS_TIMEOUT_VIRTUAL_PIN = V1;
+const byte GPIO0_PIN = 0;
 
 char auth[] = BLYNK_AUTH_TOKEN;
 char ssid[] = "Huy Quang";
