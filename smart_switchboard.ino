@@ -23,8 +23,7 @@ void oneSecondTimerEvent() {
   if (lightsTimeout == 0) {
     return;
   }
-  --lightsTimeout;
-  if (lightsTimeout == 0) {
+  if (--lightsTimeout == 0) {
     if (digitalRead(GPIO0_PIN) == LOW) {
       return;
     }
