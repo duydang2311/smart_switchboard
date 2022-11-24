@@ -11,7 +11,7 @@ const byte LIGHTS_TIMEOUT_VIRTUAL_PIN = V1;
 const byte GPIO0_PIN = 0;
 
 char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "Huy Quang";
+char ssid[] = "Quang Huy";
 char pass[] = "hettienroiban";
 long lightsTimeout = 0;
 
