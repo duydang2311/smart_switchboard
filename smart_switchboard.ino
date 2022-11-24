@@ -18,14 +18,17 @@ long lightsTimeout = 0;
 BlynkTimer timer;
 
 void everySecondTimerEvent() {
+  Serial.println(lightsTimeout);
   Blynk.virtualWrite(UPTIME_VIRTUAL_PIN, millis() / 1000);
 
   if (lightsTimeout > 0 && --lightsTimeout == 0) {
+    Serial.println(digitalRead(GPIO0_PIN));
     Blynk.virtualWrite(LIGHTS_TIMEOUT_VIRTUAL_PIN, 0);
     if (digitalRead(GPIO0_PIN) == LOW) {
       return;
     }
     digitalWrite(GPIO0_PIN, LOW);
+    Serial.println("write LOW");
   }
 }
 
