@@ -1,42 +1,34 @@
 #define BLYNK_TEMPLATE_ID           "TMPLVOlHlkey"
 #define BLYNK_DEVICE_NAME           "Smart Switchboard"
 #define BLYNK_AUTH_TOKEN            "cN_2zPno9nDY9gLR9o-FvN6I1aWJVJDu"
-
-
-// Comment this out to disable prints and save space
 #define BLYNK_PRINT Serial
-
 
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 
-char auth[] = BLYNK_AUTH_TOKEN;
+const unsigned char TIMER_VIRTUAL_PIN = V0;
 
-// Your WiFi credentials.
-// Set password to "" for open networks.
+char auth[] = BLYNK_AUTH_TOKEN;
 char ssid[] = "Huy Quang";
 char pass[] = "hettienroiban";
 
 BlynkTimer timer;
 
-BLYNK_WRITE(V0)
-{
-  int value = param.asInt();
-  digitalWrite(0, value);
+void uptimeTimerEvent() {
+  Blynk.virtualWrite(TIMER_VIRTUAL_PIN, millis() / 1000);
 }
 
-BLYNK_CONNECTED()
-{
+BLYNK_CONNECTED() {
+  Serial.println("Blynk connected!");
 }
 
-void setup()
-{
+void setup() {
   Serial.begin(115200);
 
   Blynk.begin(auth, ssid, pass);
+  timer.setInterval(1000L, uptimeTimerEvent);
 }
 
-void loop()
-{
+void loop() {
   Blynk.run();
 }
