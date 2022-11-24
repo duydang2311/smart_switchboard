@@ -1,5 +1,5 @@
 #define BLYNK_TEMPLATE_ID           "TMPLVOlHlkey"
-#define BLYNK_DEVICE_NAME           "Quickstart Device"
+#define BLYNK_DEVICE_NAME           "Smart Switchboard"
 #define BLYNK_AUTH_TOKEN            "cN_2zPno9nDY9gLR9o-FvN6I1aWJVJDu"
 
 
