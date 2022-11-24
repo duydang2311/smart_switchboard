@@ -6,10 +6,11 @@
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 
-#define UPTIME_VIRTUAL_PIN V0
-#define LIGHTS_TIMEOUT_VIRTUAL_PIN V1
+#define GPIO0_VIRTUAL_PIN V0
+#define UPTIME_VIRTUAL_PIN V1
+#define LIGHTS_TIMEOUT_VIRTUAL_PIN V2
 
-const byte GPIO0_PIN = 0;
+const byte GPIO0_DIGITAL_PIN = 0;
 
 char auth[] = BLYNK_AUTH_TOKEN;
 char ssid[] = "Quang Huy";
@@ -23,11 +24,15 @@ void everySecondTimerEvent() {
 
   if (lightsTimeout > 0 && --lightsTimeout == 0) {
     Blynk.virtualWrite(LIGHTS_TIMEOUT_VIRTUAL_PIN, 0);
-    if (digitalRead(GPIO0_PIN) == LOW) {
+    if (digitalRead(GPIO0_DIGITAL_PIN) == LOW) {
       return;
     }
-    digitalWrite(GPIO0_PIN, LOW);
+    Blynk.virtualWrite(GPIO0_VIRTUAL_PIN, 0);
   }
+}
+
+BLYNK_WRITE(GPIO0_VIRTUAL_PIN) {
+  digitalWrite(GPIO0_DIGITAL_PIN, param.asInt());
 }
 
 BLYNK_WRITE(LIGHTS_TIMEOUT_VIRTUAL_PIN) {
@@ -39,7 +44,7 @@ BLYNK_CONNECTED() {
 }
 
 void setup() {
-  pinMode(GPIO0_PIN, OUTPUT);
+  pinMode(GPIO0_DIGITAL_PIN, OUTPUT);
   Serial.begin(115200);
 
   Blynk.begin(auth, ssid, pass);
