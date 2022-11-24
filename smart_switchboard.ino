@@ -18,6 +18,7 @@ long lightsTimeout = 0;
 BlynkTimer timer;
 
 void everySecondTimerEvent() {
+  
   Blynk.virtualWrite(UPTIME_VIRTUAL_PIN, millis() / 1000);
 
   if (lightsTimeout == 0) {
@@ -49,4 +50,5 @@ void setup() {
 
 void loop() {
   Blynk.run();
+  timer.run();
 }
