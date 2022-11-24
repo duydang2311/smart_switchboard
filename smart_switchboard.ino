@@ -18,13 +18,10 @@ long lightsTimeout = 0;
 BlynkTimer timer;
 
 void everySecondTimerEvent() {
-  
   Blynk.virtualWrite(UPTIME_VIRTUAL_PIN, millis() / 1000);
 
-  if (lightsTimeout == 0) {
-    return;
-  }
-  if (--lightsTimeout == 0) {
+  if (lightsTimeout > 0 && --lightsTimeout == 0) {
+    Blynk.virtualWrite(LIGHTS_TIMEOUT_VIRTUAL_PIN, 0);
     if (digitalRead(GPIO0_PIN) == LOW) {
       return;
     }
