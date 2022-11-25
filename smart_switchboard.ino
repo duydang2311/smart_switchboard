@@ -32,6 +32,7 @@ void everySecondTimerEvent() {
 }
 
 BLYNK_WRITE(GPIO0_VIRTUAL_PIN) {
+  Serial.println(param.asInt());
   digitalWrite(GPIO0_DIGITAL_PIN, param.asInt());
 }
 
