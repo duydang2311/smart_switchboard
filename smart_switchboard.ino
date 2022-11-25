@@ -33,9 +33,9 @@ void everySecondTimerEvent() {
 
 BLYNK_WRITE(GPIO0_VIRTUAL_PIN) {
   if (param.asInt() == HIGH) {
-    digitalWrite(GPI0_DIGITAL_PIN, HIGH);
+    digitalWrite(GPIO0_DIGITAL_PIN, HIGH);
   } else {
-    digitalWrite(GPI0_DIGITAL_PIN, LOW);
+    digitalWrite(GPIO0_DIGITAL_PIN, LOW);
   }
 }
 
