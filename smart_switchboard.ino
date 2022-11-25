@@ -32,8 +32,11 @@ void everySecondTimerEvent() {
 }
 
 BLYNK_WRITE(GPIO0_VIRTUAL_PIN) {
-  Serial.println(param.asInt());
-  digitalWrite(GPIO0_DIGITAL_PIN, param.asInt());
+  if (param.asInt() == HIGH) {
+    digitalWrite(GPI0_DIGITAL_PIN, HIGH);
+  } else {
+    digitalWrite(GPI0_DIGITAL_PIN, LOW);
+  }
 }
 
 BLYNK_WRITE(LIGHTS_TIMEOUT_VIRTUAL_PIN) {
