@@ -28,6 +28,7 @@ void everySecondTimerEvent() {
       return;
     }
     Blynk.virtualWrite(GPIO0_VIRTUAL_PIN, 0);
+    digitalWrite(GPIO0_DIGITAL_PIN, LOW);
   }
 }
 
